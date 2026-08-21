@@ -154,54 +154,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 4945934815491065696}
-  input:
-    m_Name: Input
+  movement:
+    m_Name: Movement
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 70ca83cb-84d4-49ed-b320-cf9ec94fd1ad
+    m_Id: 4edd23ac-3c7f-4fc9-8bcb-099fa52b31f9
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 2D Vector
-      m_Id: b1a9b017-20a6-44b4-9417-a6117e656a26
+      m_Id: 4eeda94e-8a35-4dfd-9c6a-fc44fba8a900
       m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Input
+      m_Action: Movement
       m_Flags: 4
     - m_Name: up
-      m_Id: 46a1abc6-a8a9-49a9-83d3-d62e166875d4
+      m_Id: 603e6099-5135-4704-8ba0-3418f7516fa3
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Input
+      m_Action: Movement
       m_Flags: 8
     - m_Name: down
-      m_Id: 818c0b80-cad8-4836-850d-1718576ea6b5
+      m_Id: 3b4cd52c-e986-4b82-bdf8-a6e7ddc2e0eb
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Input
+      m_Action: Movement
       m_Flags: 8
     - m_Name: left
-      m_Id: 2b3b336f-bc06-483b-82dc-19b5208bc53d
+      m_Id: 8c2bdcde-72b3-40fd-8700-7ffa22584c50
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Input
+      m_Action: Movement
       m_Flags: 8
     - m_Name: right
-      m_Id: 13eab443-6485-41a7-bbf6-f0ea8a531ba2
+      m_Id: 3cd11f92-dc7a-45ee-a2e3-1eecc6c0cf4f
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Input
+      m_Action: Movement
       m_Flags: 8
+    m_Flags: 0
+    m_Priority: 0
+  toggleRecord:
+    m_Name: Toggle Record
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e6cae824-582b-4b68-97c2-83cf9dd818aa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d633267f-a81b-473e-878c-2987adec8428
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Toggle Record
+      m_Flags: 0
     m_Flags: 0
     m_Priority: 0
 --- !u!1 &5011475522455310673
