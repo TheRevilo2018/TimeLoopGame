@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour
 
     private Vector2 currentForce = new Vector2(0, 0);
     private bool recording = false;
-    private List<Vector3> inputs = new List<Vector3>();
+    private List<Vector3> inputs = new List<Vector3>() { Vector3.zero };
     private int inputIndex = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
