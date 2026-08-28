@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
@@ -19,7 +16,10 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var force = (target.Target.position - transform.position) * (1 / Time.fixedDeltaTime);
+        var dif = target.Target.position - transform.position;
+        if (dif.magnitude > maxDistance) return;
+
+        var force = dif * (1 / Time.fixedDeltaTime);
         rb.linearVelocity = clampVector3(force);
     }
 
