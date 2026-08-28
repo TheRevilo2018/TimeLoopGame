@@ -504,6 +504,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4121774939250853062, guid: 29eee48d072ba8f4aba08d1689a892ee, type: 3}
+      propertyPath: maxAccel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121774939250853062, guid: 29eee48d072ba8f4aba08d1689a892ee, type: 3}
       propertyPath: maxForce
       value: 2
       objectReference: {fileID: 0}

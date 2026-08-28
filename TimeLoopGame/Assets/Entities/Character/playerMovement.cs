@@ -3,7 +3,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public float maxForce = 10f;
+    public float maxAccel = 10f;
     public float maxDistance = 2;
 
     public MonoBehaviour targetObject;
@@ -16,18 +16,19 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var dif = target.Target.position - transform.position;
-        if (dif.magnitude > maxDistance) return;
+        var posDif = target.Target.position - transform.position;
+        if (posDif.magnitude > maxDistance) return;
 
-        var force = dif * (1 / Time.fixedDeltaTime);
-        rb.linearVelocity = clampVector3(force);
+        var newVel = posDif * (1 / Time.fixedDeltaTime);
+        var velDif = newVel - rb.linearVelocity;
+        rb.linearVelocity += clampVector3(velDif, maxAccel);
     }
 
-    private Vector3 clampVector3(Vector3 v)
+    private Vector3 clampVector3(Vector3 v, float clampVal)
     {
         var mag = v.magnitude;
-        if (mag < maxForce) return v;
+        if (mag < clampVal) return v;
 
-        return v * (maxForce / mag);
+        return v * (maxAccel / mag);
     }
 }
