@@ -5,72 +5,29 @@ using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
-    const float FORCE_MULT = 10;
-
     public Rigidbody rb;
-    public InputAction movement;
-    public InputAction toggleRecord;
+    public float maxForce = 10f;
+    public float maxDistance = 2;
 
-    private Vector2 currentForce = new Vector2(0, 0);
-    private bool recording = false;
-    private List<Vector3> inputs = new List<Vector3>() { Vector3.zero };
-    private int inputIndex = 0;
+    public MonoBehaviour targetObject;
+    private IMoveTarget target;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        toggleRecord.performed += ToggleRecord_performed;
-    }
-
-    private void OnEnable()
-    {
-        movement.Enable();
-        toggleRecord.Enable();
-    }
-
-    private void OnDisable()
-    {
-        movement.Disable();
-        toggleRecord.Disable();
-        recording = false;
+        target = (IMoveTarget)targetObject;
     }
 
     private void FixedUpdate()
     {
-        Vector3 newForce = new Vector3();
-        if (recording)
-        {
-            newForce = new Vector3(currentForce.x * FORCE_MULT, 0, currentForce.y * FORCE_MULT);
-            inputs.Add(newForce);
-        }
-        else
-        {
-            inputIndex++;
-            if (inputIndex >= inputs.Count) inputIndex = 0;
-
-            newForce = inputs[inputIndex];
-        }
-
-        rb.AddForce(newForce);
+        var force = (target.Target.position - transform.position) * (1 / Time.fixedDeltaTime);
+        rb.linearVelocity = clampVector3(force);
     }
 
-    private void Update()
+    private Vector3 clampVector3(Vector3 v)
     {
-        currentForce = movement.ReadValue<Vector2>();
-    }
+        var mag = v.magnitude;
+        if (mag < maxForce) return v;
 
-    private void ToggleRecord_performed(InputAction.CallbackContext obj)
-    {
-        toggleRecording();
-    }
-
-    private void toggleRecording()
-    {
-        if (!recording)
-        {
-            inputs.Clear();
-            inputIndex = 0;
-        }
-        recording = !recording;
+        return v * (maxForce / mag);
     }
 }

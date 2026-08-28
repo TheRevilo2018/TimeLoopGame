@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class arrowsController : MonoBehaviour
+public class arrowsController : MonoBehaviour, IMoveTarget
 {
     public float speed;
     public InputAction movement;
@@ -12,6 +12,8 @@ public class arrowsController : MonoBehaviour
     private bool recording = false;
     private List<Vector3> inputs = new List<Vector3>() { Vector3.zero };
     private int inputIndex = 0;
+
+    public Transform Target => transform;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

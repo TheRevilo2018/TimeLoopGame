@@ -391,6 +391,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4121774939250853062, guid: 29eee48d072ba8f4aba08d1689a892ee, type: 3}
+      propertyPath: maxForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121774939250853062, guid: 29eee48d072ba8f4aba08d1689a892ee, type: 3}
+      propertyPath: targetObject
+      value: 
+      objectReference: {fileID: 824635206}
     - target: {fileID: 5011475522455310673, guid: 29eee48d072ba8f4aba08d1689a892ee, type: 3}
       propertyPath: m_Name
       value: ElementalCharacter
@@ -440,6 +448,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29eee48d072ba8f4aba08d1689a892ee, type: 3}
+--- !u!114 &824635206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3923321814496200274, guid: ca3ec45e68d7ad24686c3c2d9fabade1, type: 3}
+  m_PrefabInstance: {fileID: 1575886685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae81fdb4267eb4e4aa0cb08d81ab2424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
