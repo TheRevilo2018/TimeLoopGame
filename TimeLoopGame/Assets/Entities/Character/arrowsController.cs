@@ -8,7 +8,7 @@ public class arrowsController : MonoBehaviour, IMoveTarget
     public InputAction movement;
     public InputAction toggleRecord;
 
-    private Vector2 currentForce = new Vector2(0, 0);
+    private Vector3 currentForce = new Vector3(0, 0, 0);
     private bool recording = false;
     private List<Vector3> inputs = new List<Vector3>() { Vector3.zero };
     private int inputIndex = 0;
@@ -39,7 +39,7 @@ public class arrowsController : MonoBehaviour, IMoveTarget
         Vector3 dPos = new Vector3();
         if (recording)
         {
-            dPos = new Vector3(currentForce.x * speed, 0, currentForce.y * speed);
+            dPos = currentForce * speed;
             inputs.Add(dPos);
         }
         else
@@ -55,7 +55,7 @@ public class arrowsController : MonoBehaviour, IMoveTarget
 
     private void Update()
     {
-        currentForce = movement.ReadValue<Vector2>();
+        currentForce = movement.ReadValue<Vector3>();
     }
 
     private void ToggleRecord_performed(InputAction.CallbackContext obj)
