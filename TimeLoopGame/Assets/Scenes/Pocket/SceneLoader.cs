@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
         if (Instance != null) throw new InvalidOperationException("There should only be one SceneLoader");
         Instance = this;
         CoreSceneName = SM.GetActiveScene().name;
-        await LoadScene("Scenes/Sanctum");
+        await LoadScene("Scenes/PocketDimension");
     }
 
     public async Task LoadScene(string targetSceneName)
