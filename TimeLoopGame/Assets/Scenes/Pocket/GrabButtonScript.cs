@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -8,6 +9,7 @@ public class GrabButtonScript : MonoBehaviour
     public Transform anchor;
     public float activateDistance = 0.2f;
     public string message;
+    public UnityEvent onPressed;
 
     private Rigidbody rb;
     private ParticleSystem particles;
@@ -34,6 +36,7 @@ public class GrabButtonScript : MonoBehaviour
             else
             {
                 particles.Play();
+                onPressed?.Invoke();
                 Debug.Log(message);
                 transform.SetPositionAndRotation(anchor.position, anchor.rotation);
                 rb.linearVelocity = Vector3.zero;

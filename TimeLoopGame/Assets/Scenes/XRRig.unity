@@ -6292,6 +6292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1477553317}
+  - component: {fileID: 1477553318}
   m_Layer: 0
   m_Name: Camera Offset
   m_TagString: Untagged
@@ -6318,6 +6319,21 @@ Transform:
   - {fileID: 1161948931}
   m_Father: {fileID: 373574567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1477553318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477553316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e24e225a3b64e4aac3cc67b3030a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRRecordCreator
+  head: {fileID: 19515141}
+  rightHand: {fileID: 1860793059}
+  leftHand: {fileID: 1551931018}
 --- !u!1 &1551931017
 GameObject:
   m_ObjectHideFlags: 0
