@@ -27,7 +27,6 @@ public class RecordingManager : MonoBehaviour
         if (recording)
         {
             frameCount++;
-            Debug.Log("recording: " + frameCount);
             if (frameCount > 500)
             {
                 creator.StopRecording();
