@@ -3,6 +3,13 @@ using UnityEngine;
 public class XRFrame
 {
     public Pose Head;
-    public Pose LeftHand;
-    public Pose RightHand;
+    public HandFrame LeftHand;
+    public HandFrame RightHand;
+}
+
+public class HandFrame
+{
+    public Pose Pose;
+    public bool IsSelecting;
+    public bool IsActivating;
 }

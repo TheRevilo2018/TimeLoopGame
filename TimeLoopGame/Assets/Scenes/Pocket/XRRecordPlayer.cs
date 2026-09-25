@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class XRRecordPlayer : MonoBehaviour
 {
     public Transform head, rightHand, leftHand;
+    public NPCInteractor rightInteractor, leftInteractor;
+
+    private HandPlayer right, left;
 
     private bool running;
     private IReadOnlyList<XRFrame> frameList;
@@ -28,6 +33,12 @@ public class XRRecordPlayer : MonoBehaviour
         running = false;
     }
 
+    private void Start()
+    {
+        right = new HandPlayer(rightHand, rightInteractor);
+        left = new HandPlayer(leftHand, leftInteractor);
+    }
+
     private void FixedUpdate()
     {
         if (running)
@@ -47,7 +58,36 @@ public class XRRecordPlayer : MonoBehaviour
     private void setFrame(XRFrame frame)
     {
         head.SetPositionAndRotation(frame.Head.position, frame.Head.rotation);
-        rightHand.SetPositionAndRotation(frame.RightHand.position, frame.RightHand.rotation);
-        leftHand.SetPositionAndRotation(frame.LeftHand.position, frame.LeftHand.rotation);
+        right.SetHandFrame(frame.RightHand);
+        left.SetHandFrame(frame.LeftHand);
+    }
+
+
+    private class HandPlayer
+    {
+        private readonly Transform transform;
+        private readonly NPCInteractor interactor;
+        private bool isSelecting;
+
+        public HandPlayer(Transform transform, NPCInteractor interactor)
+        {
+            this.transform = transform;
+            this.interactor = interactor;
+        }
+
+        public void SetHandFrame(HandFrame frame)
+        {
+            transform.SetPositionAndRotation(frame.Pose.position, frame.Pose.rotation);
+            if (frame.IsSelecting && !isSelecting)
+            {
+                interactor.Grab();
+                isSelecting = true;
+            }
+            if (!frame.IsSelecting && isSelecting)
+            {
+                interactor.Release();
+                isSelecting = false;
+            }
+        }
     }
 }
