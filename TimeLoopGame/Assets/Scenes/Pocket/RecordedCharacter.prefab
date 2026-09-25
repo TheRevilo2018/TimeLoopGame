@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8149440944494552843}
   - component: {fileID: 6546458930736975067}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: RightHandCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,6 +408,8 @@ MonoBehaviour:
   head: {fileID: 6270062144605197834}
   rightHand: {fileID: 8776498349484006211}
   leftHand: {fileID: 2991687481828824669}
+  rightInteractor: {fileID: 6546458930736975067}
+  leftInteractor: {fileID: 334983556535746436}
 --- !u!1 &8207228004187076288
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +424,7 @@ GameObject:
   - component: {fileID: 6173255903686429606}
   - component: {fileID: 334983556535746436}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: LeftHandCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

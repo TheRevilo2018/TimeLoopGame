@@ -13,7 +13,7 @@ public class NPCInteractor : XRBaseInteractor
         var interactable = grabbables
             .Select(x => x.GetComponent<IXRSelectInteractable>())
             .FirstOrDefault();
-        if (interactable != null) return;
+        if (interactable == null) return;
         StartManualInteraction(interactable);
     }
 

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class XRRecordPlayer : MonoBehaviour
 {

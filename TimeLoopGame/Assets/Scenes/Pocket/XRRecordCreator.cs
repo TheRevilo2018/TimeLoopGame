@@ -63,8 +63,9 @@ public class XRRecordCreator : MonoBehaviour
         return new HandFrame
         {
             Pose = new Pose(pose.position, pose.rotation),
-            IsSelecting = select.action.ReadValue<bool>(),
-            IsActivating = activate.action.ReadValue<bool>(),
+
+            IsSelecting = select.action.ReadValue<float>() > 0,
+            IsActivating = activate.action.ReadValue<float>() > 0,
         };
     }
 }
