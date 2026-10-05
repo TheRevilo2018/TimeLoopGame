@@ -34,6 +34,7 @@ public class SceneLoader : MonoBehaviour
         }
         CurrentSceneName = targetSceneName;
         await SM.LoadSceneAsync(targetSceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        SM.SetActiveScene(SM.GetSceneByName(targetSceneName));
         IsLoading = false;
     }
 }

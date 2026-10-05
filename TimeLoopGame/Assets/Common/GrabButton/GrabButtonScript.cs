@@ -6,9 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GrabButtonScript : MonoBehaviour
 {
-    public Transform anchor;
+    public Transform grabTransform;
     public float activateDistance = 0.2f;
-    public string message;
     public UnityEvent onPressed;
 
     private Rigidbody rb;
@@ -18,16 +17,16 @@ public class GrabButtonScript : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         particles = GetComponentInChildren<ParticleSystem>();
-        grabbable = GetComponent<XRGrabInteractable>();
+        grabbable = GetComponentInChildren<XRGrabInteractable>();
         interactionManager = FindAnyObjectByType<XRInteractionManager>();
     }
 
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(anchor.position, transform.position) > activateDistance)
+        if (Vector3.Distance(grabTransform.position, transform.position) > activateDistance)
         {
             if (grabbable.isSelected)
             {
@@ -37,8 +36,7 @@ public class GrabButtonScript : MonoBehaviour
             {
                 particles.Play();
                 onPressed?.Invoke();
-                Debug.Log(message);
-                transform.SetPositionAndRotation(anchor.position, anchor.rotation);
+                grabTransform.SetPositionAndRotation(transform.position, transform.rotation);
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
             }

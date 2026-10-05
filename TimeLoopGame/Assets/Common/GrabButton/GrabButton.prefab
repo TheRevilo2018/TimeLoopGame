@@ -99,6 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1790052631753919578}
+  - component: {fileID: 5464158698282649012}
   m_Layer: 0
   m_Name: GrabButton
   m_TagString: Untagged
@@ -123,6 +124,23 @@ Transform:
   - {fileID: 4553414945008726466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5464158698282649012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461835007983188989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d4ff88b72b1cf4d97738fdcf3aefba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabButtonScript
+  grabTransform: {fileID: 3176354582339602910}
+  activateDistance: 0.3
+  onPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8435173308043767385
 GameObject:
   m_ObjectHideFlags: 0
@@ -5029,7 +5047,6 @@ GameObject:
   - component: {fileID: 2177158038370853092}
   - component: {fileID: 6992878247216632817}
   - component: {fileID: 7130509203054610669}
-  - component: {fileID: 763246584733817405}
   - component: {fileID: 6930693801208389412}
   - component: {fileID: 1869287128412956775}
   m_Layer: 0
@@ -5133,21 +5150,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &763246584733817405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9214369273679808984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d4ff88b72b1cf4d97738fdcf3aefba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabButtonScript
-  anchor: {fileID: 4553414945008726466}
-  activateDistance: 0.3
-  message: Button Hit!
 --- !u!54 &6930693801208389412
 Rigidbody:
   m_ObjectHideFlags: 0
