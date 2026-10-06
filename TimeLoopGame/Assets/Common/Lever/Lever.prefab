@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6407242310389602414}
+  - component: {fileID: 5755167613003253668}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -33,6 +34,21 @@ Transform:
   - {fileID: 1287427635186136175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5755167613003253668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556821997362597732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b16b9c8a8a6dd348ad0a93001fcf304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lever
+  joint: {fileID: 7871620939722942534}
+  rb: {fileID: 572455648620044374}
+  force: 500
 --- !u!1 &3043105655600611174
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +411,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -414,15 +430,15 @@ HingeJoint:
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  m_UseSpring: 0
+  m_UseSpring: 1
   m_Spring:
     spring: 0
     damper: 0.1
     targetPosition: 0
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
-    targetVelocity: 0
-    force: 0
+    targetVelocity: 1
+    force: 1
     freeSpin: 0
   m_UseLimits: 1
   m_ExtendedLimits: 0
