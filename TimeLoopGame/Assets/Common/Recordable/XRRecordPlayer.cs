@@ -5,8 +5,7 @@ using UnityEngine;
 public class XRRecordPlayer : MonoBehaviour
 {
     public Transform head, rightHand, leftHand;
-    public NPCInteractor rightInteractor, leftInteractor;
-
+    public XRInputDeviceButtonRecorded rightSelect, rightActivate, leftSelect, leftActivate;
     private HandPlayer right, left;
 
     private bool running;
@@ -33,8 +32,8 @@ public class XRRecordPlayer : MonoBehaviour
 
     private void Start()
     {
-        right = new HandPlayer(rightHand, rightInteractor);
-        left = new HandPlayer(leftHand, leftInteractor);
+        right = new HandPlayer(rightHand, rightSelect, rightActivate);
+        left = new HandPlayer(leftHand, leftSelect, leftActivate);
     }
 
     private void FixedUpdate()
@@ -64,28 +63,21 @@ public class XRRecordPlayer : MonoBehaviour
     private class HandPlayer
     {
         private readonly Transform transform;
-        private readonly NPCInteractor interactor;
-        private bool isSelecting;
+        private readonly XRInputDeviceButtonRecorded selectButton;
+        private readonly XRInputDeviceButtonRecorded activateButton;
 
-        public HandPlayer(Transform transform, NPCInteractor interactor)
+        public HandPlayer(Transform transform, XRInputDeviceButtonRecorded selectButton, XRInputDeviceButtonRecorded activateButton)
         {
             this.transform = transform;
-            this.interactor = interactor;
+            this.selectButton = selectButton;
+            this.activateButton = activateButton;
         }
 
         public void SetHandFrame(HandFrame frame)
         {
             transform.SetPositionAndRotation(frame.Pose.position, frame.Pose.rotation);
-            if (frame.IsSelecting && !isSelecting)
-            {
-                interactor.Grab();
-                isSelecting = true;
-            }
-            if (!frame.IsSelecting && isSelecting)
-            {
-                interactor.Release();
-                isSelecting = false;
-            }
+            selectButton.SimulatedButtonValue = frame.IsSelecting ? 1 : 0;
+            activateButton.SimulatedButtonValue = frame.IsActivating ? 1 : 0;
         }
     }
 }
