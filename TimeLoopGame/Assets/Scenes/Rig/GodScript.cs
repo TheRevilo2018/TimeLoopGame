@@ -15,17 +15,11 @@ public class GodScript : MonoBehaviour
     private const string MAIN_SCENE_PATH = "Scenes/PocketDimension";
     private bool home = true;
 
-    public async void Start()
+    public void Start()
     {
         loader = new SceneLoader();
-        await loader.LoadScene(MAIN_SCENE_PATH);
-        buttonList = FindObjectsByType<TeleportButton>().ToList();
         characterManger.RecordingFinished += CharacterManger_RecordingFinished;
-
-        foreach (var button in buttonList)
-        {
-            button.teleportRequested += Button_teleportRequested;
-        }
+        startLoadHome();
     }
 
     private void CharacterManger_RecordingFinished(object sender, System.EventArgs e)
@@ -44,7 +38,15 @@ public class GodScript : MonoBehaviour
         if (loadingTask != null && loadingTask.IsCompleted)
         {
             loadingTask = null;
-            if (!home)
+            if (home)
+            {
+                buttonList = FindObjectsByType<TeleportButton>().ToList();
+                foreach (var button in buttonList)
+                {
+                    button.teleportRequested += Button_teleportRequested;
+                }
+            }
+            else
             {
                 characterManger.StartScene();
                 var anchor = characterManger.RecordAnchor(golemId);
@@ -57,6 +59,12 @@ public class GodScript : MonoBehaviour
     private bool startLoad(string scenePath)
     {
         if (loadingTask != null) return false;
+
+        foreach (var button in buttonList)
+        {
+            button.teleportRequested -= Button_teleportRequested;
+        }
+
         home = false;
         loadingTask = loader.LoadScene(scenePath);
         return true;
