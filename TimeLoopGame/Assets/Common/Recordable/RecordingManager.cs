@@ -33,7 +33,7 @@ public class RecordingManager : MonoBehaviour
                 var obj = Instantiate(myPrefab, transform.position, transform.rotation);
                 var record = obj.GetComponent<XRRecordPlayer>();
                 record.SetFrameList(creator.Frames);
-                record.Play();
+                record.PlayRecording();
                 recording = false;
             }
         }

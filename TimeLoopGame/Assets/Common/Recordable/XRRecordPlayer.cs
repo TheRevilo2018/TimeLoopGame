@@ -19,15 +19,19 @@ public class XRRecordPlayer : MonoBehaviour
         this.frameList = frameList;
     }
 
-    public void Play()
+    public void PlayRecording()
     {
         running = true;
-        frameIndex = 0;
     }
 
-    public void Stop()
+    public void PauseRecording()
     {
         running = false;
+    }
+
+    public void ResetRecording()
+    {
+        frameIndex = 0;
     }
 
     private void Start()
@@ -47,7 +51,7 @@ public class XRRecordPlayer : MonoBehaviour
             }
             else
             {
-                Stop();
+                PauseRecording();
             }
         }
     }
@@ -75,9 +79,9 @@ public class XRRecordPlayer : MonoBehaviour
 
         public void SetHandFrame(HandFrame frame)
         {
-            transform.SetPositionAndRotation(frame.Pose.position, frame.Pose.rotation);
             selectButton.SimulatedButtonValue = frame.IsSelecting ? 1 : 0;
             activateButton.SimulatedButtonValue = frame.IsActivating ? 1 : 0;
+            transform.SetPositionAndRotation(frame.Pose.position, frame.Pose.rotation);
         }
     }
 }
