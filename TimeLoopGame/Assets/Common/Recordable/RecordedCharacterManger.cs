@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class RecordedCharacterManger : MonoBehaviour
     readonly Dictionary<int, IReadOnlyList<XRFrame>> frames = new Dictionary<int, IReadOnlyList<XRFrame>>();
     int anchorId;
     int startingFrame, endingFrame, currentFrame;
+
+    public event EventHandler RecordingFinished;
     
     public bool Running { get; private set; } = false;
 
@@ -27,6 +30,7 @@ public class RecordedCharacterManger : MonoBehaviour
                 creator.StopRecording();
                 frames[anchorId] = creator.Frames;
                 Running = false;
+                RecordingFinished?.Invoke(this, EventArgs.Empty);
             }
         }
     }
@@ -39,6 +43,10 @@ public class RecordedCharacterManger : MonoBehaviour
             if (frames.ContainsKey(anchor.AnchorId))
             {
                 anchor.player.SetFrameList(frames[anchor.AnchorId]);
+            }
+            else
+            {
+                anchor.player.SetFrameList(new XRFrame[0]);
             }
         }
     }
