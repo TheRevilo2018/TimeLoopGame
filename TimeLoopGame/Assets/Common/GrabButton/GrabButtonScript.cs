@@ -35,7 +35,7 @@ public class GrabButtonScript : MonoBehaviour
             else
             {
                 particles.Play();
-                onPressed?.Invoke();
+                if (onPressed != null) onPressed.Invoke();
                 grabTransform.SetPositionAndRotation(transform.position, transform.rotation);
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;

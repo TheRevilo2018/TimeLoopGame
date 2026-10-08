@@ -45,6 +45,7 @@ public class GodScript : MonoBehaviour
                 {
                     button.teleportRequested += Button_teleportRequested;
                 }
+                player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             }
             else
             {
